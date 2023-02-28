@@ -21,14 +21,12 @@ const User = new Schema({
     FirstName:{
         type:String,
         required:[true,'FirstName is required'],
-        unique:true,
         maxLength:[12,'FirstName too long'],
         minLength:[3,'FirstName too short']
     },
     LastName:{
         type:String,
         required:[true,'LastName is required'],
-        unique:true,
         maxLength:[12,'LastName too long'],
         minLength:[3,'LastName too short']
     },

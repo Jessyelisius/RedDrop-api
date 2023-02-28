@@ -43,7 +43,9 @@ app.use('/api/register',require('./router/api/register.api.router'))//register
 
 app.use('/api/login',require('./router/api/login.api.router'))//login
 
-app.use('/api/donations',require('./router/api/Donations.api.router'))//login
+app.use('/api/donations',require('./router/api/Donations.api.router'))//Donations
+
+app.use('/api/hospital',require('./router/api/hospital.api.router'))//Hospitals
 
 app.use((req,res)=>{
     res.status(404).render('404')
