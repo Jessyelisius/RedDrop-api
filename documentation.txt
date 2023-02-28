@@ -1,0 +1,188 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/register --post
+
+input:
+{
+     Email:{
+        type:String,
+        required:[true,'Email is required'],
+        unique:true,
+        maxLength:[30,'Email too long'],
+        minLength:[5,'Email too short']
+    },
+    DOB:{
+        type:String,
+        required:[true,'Date of birth is required'],
+    },
+    State:{
+        type:String,
+        required:[true,'State is required is required'],  
+    },
+    FirstName:{
+        type:String,
+        required:[true,'FirstName is required'],
+        unique:true,
+        maxLength:[12,'FirstName too long'],
+        minLength:[3,'FirstName too short']
+    },
+    LastName:{
+        type:String,
+        required:[true,'LastName is required'],
+        unique:true,
+        maxLength:[12,'LastName too long'],
+        minLength:[3,'LastName too short']
+    },
+    PostalCode:{
+        type:Number,
+        required:[true,'PostalCode is required'],
+    },
+    Username:{
+        type:String,
+        required:[true,'Username is required'],
+        unique:true,
+        maxLength:[12,'Username too long'],
+        minLength:[4,'Username too short']
+    },
+    Password:{
+        type:String,
+        required:[true,'Password is Invalid'],
+        unique:true,
+        minLength:[6,'Password too short']
+    },
+    Verified:{
+        type:Boolean,
+        required:[true,'Verified is required'],
+        default:false
+    },
+    BloodGroup:{
+        type:String,
+        required:[true,'BloodGroup is required'],
+    },
+    Genotype:{
+        type:String,
+        required:[true,'Genotype is required'],
+    },
+}
+
+
+output:
+{
+    Access:true, 
+    Error:error/false, 
+    auth:userid, 
+    verified:false,
+    Data:{
+        Email,
+        DOB,
+        State,
+        FirstName,
+        LastName,
+        PostalCode,
+        Username,
+        Password,
+        Verified,
+        BloodGroup,
+        Genotype
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/login --- post
+
+input:
+{
+    Email:{
+        type:String,
+        required:[true,'Email is required'],
+        unique:true,
+        maxLength:[30,'Email too long'],
+        minLength:[5,'Email too short']
+    },
+    Password:{
+        type:String,
+        required:[true,'Password is Invalid'],
+        unique:true,
+        minLength:[6,'Password too short']
+    },
+    
+}
+
+
+output:
+{
+    Access:true, 
+    Error:error/false, 
+    auth:userid, 
+    verified:Boolean,
+    Data:{
+        Email,
+        DOB,
+        State,
+        FirstName,
+        LastName,
+        PostalCode,
+        Username,
+        Password,
+        Verified,
+        BloodGroup,
+        Genotype
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/donation/all -- get
+
+output:
+{
+    Access:true,
+    Error:error/false, 
+    Donations:[{
+        UserID: string;
+        HospitalID: string;
+        Process: "Pending" | "Donated" | "Cancelled";
+        DatePlaced: string;
+        AppointmentDate: string;
+    }],
+    Allhospital:[{
+        Email: string;
+        State: string;
+        PostalCode: number;
+        Password: string;
+        Name: string;
+        Location: string;
+        PhoneNumber: string;
+        Verified1: boolean;
+        HospitalDoc1: string;
+        HospitalDoc2: string;
+        Verified2: boolean;
+    }]
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/donation/pending -- get
+
+output:
+{
+    Access:true,
+    Error:error/false, 
+    PendingDonations:[{
+        UserID: string;
+        HospitalID: string;
+        Process: "Pending" | "Donated" | "Cancelled";
+        DatePlaced: string;
+        AppointmentDate: string;
+    }],
+    Allhospital:[{
+        Email: string;
+        State: string;
+        PostalCode: number;
+        Password: string;
+        Name: string;
+        Location: string;
+        PhoneNumber: string;
+        Verified1: boolean;
+        HospitalDoc1: string;
+        HospitalDoc2: string;
+        Verified2: boolean;
+    }]
+}
