@@ -196,3 +196,80 @@ output:
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/hospital/all -- get
+
+headers:{
+    authorization:userid
+}
+
+output:
+{
+    Access:true,
+    Error:error/false, 
+    Hospitals:[{
+        Email: string;
+        State: string;
+        PostalCode: number;
+        Password: string;
+        Name: string;
+        Location: string;
+        PhoneNumber: string;
+        Verified1: boolean;
+        HospitalDoc1: string;
+        HospitalDoc2: string;
+        Verified2: boolean;
+    }]
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/hospital/postalcode/:code -- get
+
+
+headers:{
+    authorization:userid
+}
+
+output:
+{
+    Access:true,
+    Error:error/false, 
+    Hospitals:[{
+        Email: string;
+        State: string;
+        PostalCode: number;
+        Password: string;
+        Name: string;
+        Location: string;
+        PhoneNumber: string;
+        Verified1: boolean;
+        HospitalDoc1: string;
+        HospitalDoc2: string;
+        Verified2: boolean;
+    }]
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/hospital/state/:state -- get
+
+headers:{
+    authorization:userid
+}
+
+output:
+{
+    Access:true,
+    Error:error/false, 
+    Hospitals:[{
+        Email: string;
+        State: string;
+        PostalCode: number;
+        Password: string;
+        Name: string;
+        Location: string;
+        PhoneNumber: string;
+        Verified1: boolean;
+        HospitalDoc1: string;
+        HospitalDoc2: string;
+        Verified2: boolean;
+    }]
+}
