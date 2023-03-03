@@ -273,3 +273,17 @@ output:
         Verified2: boolean;
     }]
 }
+
+--------{Access:true, Error:false,Sent:true}-----------------------------------------------------------------------------------------------------------------------------------------------
+/verify -- get
+
+headers:{
+    authorization:userid
+}
+
+output:
+{
+    Access:true,
+    Error:error/false, 
+    Sent:true
+}
