@@ -8,7 +8,7 @@ router.get('/details',async(req,res)=>{
     try {
         const auth = req.headers.authorization    
         //checklogins
-        let user= await userModel.findOne({_id:auth})
+        let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
         delete(user.Password);
         delete(user.__v);
         return user?res.json({Access:true,Error:false,Data:{

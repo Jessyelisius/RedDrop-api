@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 4000
+
 //dotenv
 require('dotenv').config()
 
@@ -47,7 +48,9 @@ app.use('/api/donations',require('./router/api/Donations.api.router'))//Donation
 
 app.use('/api/hospital',require('./router/api/hospital.api.router'))//Hospitals
 
-app.use('/api/user',require('./router/api/user.api.router'))//User
+app.use('/api/user',require('./router/api/user.api.router'))//
+
+app.use('/verify', require('./router/api/Verifications.api.router'))//verifications
 
 app.use((req,res)=>{
     res.status(404).render('404')

@@ -9,7 +9,7 @@ router.get('/all',async(req,res)=>{
     try {
         const auth = req.headers.authorization    
         //checklogins
-        const user= await userModel.findOne({_id:auth})
+        let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
         const getdonations = user?(await DonationsModel.find({UserID:auth})):false
         return getdonations?user.Verified?res.json({Access:true, Error:false, Donations:getdonations, Allhospital:await HospitalModel.find({})}):res.json({Access:true, Error:'User not verified'}):res.status(404).json({Access:false, Error:'User details doesnt match'}) 
     
@@ -24,7 +24,7 @@ router.get('/pending',async(req,res)=>{
     try {
         const auth = req.headers.authorization    
         //checklogins
-        const user= await userModel.findOne({_id:auth})
+        let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
         const getdonations = user?(await DonationsModel.find({UserID:auth, Process:'Pending'})):false
         return getdonations?user.Verified?res.json({Access:true, Error:false, PendingDonations:getdonations, Allhospital:await HospitalModel.find({})}):res.json({Access:true, Error:'User not verified'}):res.status(404).json({Access:false, Error:'User details doesnt match'}) 
     

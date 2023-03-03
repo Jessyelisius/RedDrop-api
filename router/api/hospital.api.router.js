@@ -8,7 +8,7 @@ router.get('/all',async(req,res)=>{
     try {
         const auth = req.headers.authorization    
         //checklogins
-        const user= await userModel.findOne({_id:auth})
+        let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
         const getHospitals = user?(await HospitalModel.find({})):false
         return getHospitals?user.Verified?res.json({Access:true, Error:false, Hospitals:getHospitals}):res.json({Access:true, Error:'User not verified'}):res.status(404).json({Access:false, Error:'User details doesnt match'}) 
     
@@ -23,7 +23,7 @@ router.get('/postalcode/:code',async(req,res)=>{
     try {
         const auth = req.headers.authorization    
         //checklogins
-        const user= await userModel.findOne({_id:auth})
+        let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
         const getHospitals = user?(await HospitalModel.find({PostalCode:req.params.code?req.params.code:1})):false
 
         return getHospitals?user.Verified?res.json({Access:true, Error:false, Hospitals:getHospitals}):res.json({Access:true, Error:'User not verified'}):res.status(404).json({Access:false, Error:'User details doesnt match'}) 
@@ -39,7 +39,7 @@ router.get('/state/:Name',async(req,res)=>{
     try {
         const auth = req.headers.authorization    
         //checklogins
-        const user= await userModel.findOne({_id:auth})
+        let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
         const getHospitals = user?(await HospitalModel.find({State:req.params.Name?req.params.Name:'l'})):false
 
         return getHospitals?user.Verified?res.json({Access:true, Error:false, Hospitals:getHospitals}):res.json({Access:true, Error:'User not verified'}):res.status(404).json({Access:false, Error:'User details doesnt match'}) 
