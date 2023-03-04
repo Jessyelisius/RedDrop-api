@@ -332,3 +332,100 @@ output:
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/user/edit -- get
+
+headers:{
+    authorization:userid
+}
+
+output:
+{
+    Access:true,
+    Error:error/false, 
+    Sent:true,
+    Data:{
+        Email,
+        DOB,
+        State,
+        FirstName,
+        LastName,
+        PostalCode,
+        Username,
+        Password,
+        Verified,
+        BloodGroup,
+        Genotype
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/user/edit --- post
+
+headers:{
+    authorization:userid
+}
+
+input:
+{
+    OTP,
+    DOB,
+    State,
+    FirstName,
+    LastName,
+    PostalCode,
+    BloodGroup,
+    Genotype
+}
+
+
+output:
+{
+    Access:true,
+    Error:error/false, 
+    Sent:true,
+    Data:{
+        Email,
+        DOB,
+        State,
+        FirstName,
+        LastName,
+        PostalCode,
+        Username,
+        Password,
+        Verified,
+        BloodGroup,
+        Genotype
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/user/details -- get
+
+headers:{
+    authorization:userid
+}
+
+output:
+{
+    Access:true,
+    Error:error/false, 
+    Sent:true,
+    Data:{
+        Details:{
+            Email,
+            DOB,
+            State,
+            FirstName,
+            LastName,
+            PostalCode,
+            Username,
+            Password,
+            Verified,
+            BloodGroup,
+            Genotype
+        },
+        Profile:{
+            ImgURl
+        }
+    }
+}

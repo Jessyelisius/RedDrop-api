@@ -5,6 +5,8 @@ const { Errordisplay } = require('../../utils/Auth.utils')
 const { Sendmail } = require('../../utils/mailer.utils')
 const { OTP, Links } = require('../../utils/random.utils')
 const bcrypt= require('bcrypt')
+
+
 router.post('/',async(req,res)=>{
     
     try {
@@ -64,10 +66,12 @@ router.post('/2',async(req,res)=>{
 
       if (getotp) {
         delete(Collect.Email)
+        //validating password
         let Password = Collect.Password?(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(Collect.Password))?bcrypt.hashSync(Collect.Password,5):null:null
 
           //reseting otp and link
           let Verifs= [OTP(),Links()]
+          //updatig user details
           await userModel.updateOne({_id:user._id},{Password})
           await VerificationsModel.updateOne({UserID:user._id},{OTP:Verifs[0], Link:Verifs[1]})
 
