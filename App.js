@@ -48,9 +48,11 @@ app.use('/api/donations',require('./router/api/Donations.api.router'))//Donation
 
 app.use('/api/hospital',require('./router/api/hospital.api.router'))//Hospitals
 
-app.use('/api/user',require('./router/api/user.api.router'))//
+app.use('/api/user',require('./router/api/user.api.router'))//user details
 
 app.use('/verify', require('./router/api/Verifications.api.router'))//verifications
+
+app.use('/api/resetpassword', require('./router/api/ResetPassword.api.router'))//Reset password
 
 app.use((req,res)=>{
     res.status(404).render('404')
