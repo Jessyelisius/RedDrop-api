@@ -54,6 +54,8 @@ app.use('/verify', require('./router/api/Verifications.api.router'))//verificati
 
 app.use('/api/resetpassword', require('./router/api/ResetPassword.api.router'))//Reset password
 
+app.use('/api/profile', require('./router/api/Profile.api.router'))//Profile password
+
 app.use((req,res)=>{
     res.status(404).render('404')
 })

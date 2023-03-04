@@ -26,9 +26,10 @@ async function editIMG(file, publicID) {
     try {
       let files = file?file:false
       let PID = publicID?publicID:false
-      if (files!=false && publicID!=false) {
-          await cloudinary.v2.uploader.destroy(publicID,{resource_type:'image'})  
-          let upload =await cloudinary.v2.uploader.upload(files.tempFilePath,{resource_type:'image',public_id:publicID})
+      if (files!=false && PID!=false) {
+        console.log(PID);
+          await cloudinary.v2.uploader.destroy(PID,{resource_type:'image'})  
+          let upload =await cloudinary.v2.uploader.upload(files.tempFilePath,{resource_type:'image',public_id:PID})
           return {url:upload.secure_url, publicID:upload.public_id}
       }
       return {error:'Images are missing'}
@@ -40,18 +41,5 @@ async function editIMG(file, publicID) {
   
 
 
-async function addpdf(file) {
-    try {
-        let files = file?file:false
-        if (files!=false && paths!=false) {
-            let upload =await cloudinary.v2.uploader.upload(files.tempFilePath,{resource_type:'image',folder:process.env.document,use_filename:false,unique_filename:true})
-            return {url:upload.secure_url, publicID:upload.public_id}
-        }
-        return {error:'file not found'}
-      } catch (error) {
-        console.log(error);
-        return {error:error.message}
-      }
-}
 
-module.exports={uploadimg, deleteImg , deleteBulkImg, addpdf}
+module.exports={uploadimg, editIMG}
