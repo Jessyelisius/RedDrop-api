@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <center>
+        <h2>Register Hospital</h2>
+        <p><%= msg %></p>
+        <form action="/register" enctype="multipart/form-data" method="post">
+            <input type="text" name="Name" placeholder="Name" id="" maxlength="30" minlength="7" required>
+            <br><br>
+            <input type="email" name="Email" placeholder="Email" maxlength="30" required minlength="7" id="">
+            <br><br>
+            <select name="State" required  id="">
+                <option disabled>Select State</option>
+                <option value="abuja">Abuja</option>
+                <option value="lagos">Lagos</option>
+            </select>
+            <br><br>
+            <input type="text" name="Location" minlength="6" maxlength="50" required placeholder="Location" id="">
+            <br><br>
+            <input type="number" name="PostalCode" minlength="6" maxlength="6" required placeholder="PostalCode" id="">
+            <br><br>
+            <input type="tel" name="PhoneNumber" minlength="11" maxlength="11" required placeholder="Phone Number" id="">
+            <br><br>
+            <input type="password" name="Password" required minlength="6" maxlength="14" id="">
+            <br><br>
+            <label for="HospitalDoc1">Hospital Doc1: images only </label>
+            <input type="file" name="HospitalDoc1" accept="image/*" required id="">
+            <br><br>
+            <label for="HospitalDoc2">Hospital Doc2: images only </label>
+            <input type="file" name="HospitalDoc2" accept="image/*" required id="">
+            <br><br>
+            <button type="submit">Register</button>
+        </form> 
+        <a href="/login">login</a>
+    </center>
+</body>
+</html>

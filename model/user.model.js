@@ -44,7 +44,6 @@ const User = new Schema({
     Password:{
         type:String,
         required:[true,'Password is Invalid'],
-        unique:true,
         minLength:[6,'Password too short']
     },
     Verified:{

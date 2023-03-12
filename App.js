@@ -56,6 +56,16 @@ app.use('/api/resetpassword', require('./router/api/ResetPassword.api.router'))/
 
 app.use('/api/profile', require('./router/api/Profile.api.router'))//Profile password
 
+
+///////////////////////hospital/////////////////////////////
+app.use('/register',require('./router/hospital/Register')) // register hospital
+
+app.use('/v',require('./router/hospital/verification')) // verify hospital
+
+app.use('/login',require('./router/hospital/login')) // register hospital
+
+app.use('/dashboard',require('./router/hospital/dashboard')) // register hospital
+
 app.use((req,res)=>{
     res.status(404).render('404')
 })

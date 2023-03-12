@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <center>
+        <h2>Login Hospital</h2>
+        <p><%= msg %></p>
+        <form action="/login" method="post">
+           
+            <input type="email" name="Email" placeholder="Email" maxlength="30" required minlength="7" id="">
+            <br><br>
+            
+            <input type="password" name="Password" required minlength="6" maxlength="14" id="">
+            <br><br>
+            <button type="submit">Login</button>
+        </form> 
+        <a href="/register">register</a>
+
+    </center>
+</body>
+</html>

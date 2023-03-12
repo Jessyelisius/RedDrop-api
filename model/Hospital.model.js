@@ -41,9 +41,8 @@ const Hospital = new Schema({
     },
     Password:{
         type:String,
-        required:[true,'Password is required'],
-        unique:true,
-        minLength:[6,'Password too short']
+        required:[true,'Invalid password'],
+        minLength:[6,'Invalid password']
     },
     Verified1:{
         type:Boolean,
