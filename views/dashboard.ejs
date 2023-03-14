@@ -17,12 +17,8 @@ rel="stylesheet"
 </head>
 <body>
     <center><h1><%= Name %></h1></center>
-    <div>
-        <button onclick="switcher()">switch</button>
-      
-    </div>
-
-    <div id="all" style="display: none;">
+  
+    <div >
         <center><u><h3>All donations</h3></u></center>
         <% if (allhopsDonation) { %>
             <table class="table display stripe hover" hr>
@@ -66,9 +62,9 @@ rel="stylesheet"
                     <th data-priority="2">Genotype</th>
                     <th data-priority="3">BloodGroup</th>
                     <th data-priority="4">Email</th>
-                    <th data-priority="5">State</th>
-                    <th data-priority="6">DOB</th>
-                    <th data-priority="7">Action</th>
+                    <th data-priority="6">State</th>
+                    <th data-priority="7">DOB</th>
+                    <th data-priority="5">Action</th>
                 </thead>
                 <tbody>
                     <% allPendingDonation.forEach(i => { %>
@@ -98,12 +94,12 @@ rel="stylesheet"
         
         function switcher() {
             if (pending.style.display!='none') {
-                All.style.display='block'
+                All.style.display='unset'
                 pending.style.display='none'
                 return null
             }
             All.style.display='none'
-            pending.style.display='block'
+            pending.style.display='unset'
         }
     </script>
     <script
