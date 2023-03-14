@@ -48,7 +48,7 @@ router.post('/add',async(req,res)=>{
                 UserID:auth,
                 HospitalID:collect.HospitalID,
                 DatePlaced:collect.DatePlaced,
-                AppointmentDate:'Desired time'
+                AppointmentDate:'two weeks from dateplaced'
             })
             newdonation.save()
 
@@ -87,7 +87,7 @@ router.post('/add',async(req,res)=>{
             </html>
             `
             await Sendmail(user.Email,'Donation placed',html);
-        return res.json({Access:true, Error:false,donation:newdonation}) 
+        return res.json({Access:true, Error:false,Donation:newdonation}) 
 
         }
         return res.json({Access:true, Error:'Hospital or user doesnt  or user isnt verified'}) 

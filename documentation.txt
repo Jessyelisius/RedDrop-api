@@ -453,3 +453,30 @@ output:
         ImgURl
     }
 }
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+/api/donations/add -- get
+
+headers:{
+    authorization:userid
+}
+
+input:
+{
+  HospitalID
+  DatePlaced
+}
+
+output:
+{
+    Access:true,
+    Error:error/false, 
+    Donation:{
+        UserID,
+   HospitalID,
+   Process,
+   DatePlaced,
+   AppointmentDate,
+    }
+    
+}
