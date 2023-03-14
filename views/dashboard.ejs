@@ -5,8 +5,118 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link
+href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+rel="stylesheet"
+/>
+<!--Responsive Extension Datatables CSS-->
+<link
+href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"
+rel="stylesheet"
+/>
 </head>
 <body>
     <center><h1><%= Name %></h1></center>
+    <div>
+        <button onclick="switcher()">switch</button>
+      
+    </div>
+
+    <div id="all" style="display: none;">
+        <center><u><h3>All donations</h3></u></center>
+        <% if (allhopsDonation) { %>
+            <table class="table display stripe hover" hr>
+                <thead>
+                    <th data-priority="1">Name</th>
+                    <th data-priority="2">Genotype</th>
+                    <th data-priority="3">BloodGroup</th>
+                    <th data-priority="4">Email</th>
+                    <th data-priority="5">State</th>
+                    <th data-priority="6">DOB</th>
+                    <th data-priority="7">Process</th>
+                </thead>
+                <tbody>
+                    <% allhopsDonation.forEach(i => { %>
+                        <% let user=allUser.find(b=>b._id==i.UserID)  %>
+                        <tr>
+                            <td><%= user.Username %></td>
+                            <td><%= user.Genotype %></td>
+                            <td><%= user.BloodGroup %></td>
+                            <td><%= user.Email %></td>
+                            <td><%= user.State %></td>
+                            <td><%= user.DOB %></td>
+                            <td><%= i.Process %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+        <center>
+            <h3>no data</h3>
+        </center>
+        <% } %>
+    </div>
+    <div id="pending">
+        <center><u><h3>Pending donations</h3></u></center>
+
+        <% if (allPendingDonation) { %>
+            <table class="table display stripe hover" hr>
+                <thead>
+                    <th data-priority="1">Name</th>
+                    <th data-priority="2">Genotype</th>
+                    <th data-priority="3">BloodGroup</th>
+                    <th data-priority="4">Email</th>
+                    <th data-priority="5">State</th>
+                    <th data-priority="6">DOB</th>
+                    <th data-priority="7">Action</th>
+                </thead>
+                <tbody>
+                    <% allPendingDonation.forEach(i => { %>
+                        <% let user=allUser.find(b=>b._id==i.UserID)  %>
+                        <tr>
+                            <td><%= user.Username %></td>
+                            <td><%= user.Genotype %></td>
+                            <td><%= user.BloodGroup %></td>
+                            <td><%= user.Email %></td>
+                            <td><%= user.State %></td>
+                            <td><%= user.DOB %></td>
+                            <td><a href="/api/donations/cancel/<%= i._id %>">Cancel</a> <a href="/api/donations/done/<%= i._id %>">Done</a></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+        <center>
+            <h3>no data</h3>
+        </center>
+        <% } %>
+    </div>
+
+    <script>
+        let pending= document.getElementById('pending'),
+            All= document.getElementById('all');
+        
+        function switcher() {
+            if (pending.style.display!='none') {
+                All.style.display='block'
+                pending.style.display='none'
+                return null
+            }
+            All.style.display='none'
+            pending.style.display='block'
+        }
+    </script>
+    <script
+    type="text/javascript"
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+  ></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+      
+  <script>
+    $(document).ready(function () {
+      $('table.display').DataTable({responsive: true,"order": []});
+  });
+</script>  
 </body>
 </html>

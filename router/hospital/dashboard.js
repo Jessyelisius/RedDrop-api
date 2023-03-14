@@ -1,4 +1,5 @@
 const DonationsModel = require('../../model/Donations.model')
+const userModel = require('../../model/user.model')
 const { Errordisplay } = require('../../utils/Auth.utils')
 
 const router= require('express').Router()
@@ -15,7 +16,8 @@ router.get('/',async(req,res)=>{
 
             const allhopsDonation= await DonationsModel.find({HospitalID:HospID})
             const allPendingDonation= await DonationsModel.find({HospitalID:HospID, Process:'Pending',})
-            return res.render('dashboard',{Name:Hospname,allPendingDonation, allhopsDonation})
+            const allUser = await userModel.find({Verified:true})
+            return res.render('dashboard',{Name:Hospname,allUser,allPendingDonation, allhopsDonation})
         }
         return res.status('404').render('404')
     } catch (error) {
