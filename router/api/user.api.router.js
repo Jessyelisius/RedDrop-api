@@ -12,8 +12,8 @@ router.get('/details',async(req,res)=>{
         const auth = req.headers.authorization    
         //checklogins
         let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
-        delete(user.Password);
-        delete(user.__v);
+        user?delete(user.Password):null;
+        user?delete(user.__v):null;
         return user?res.json({Access:true,Error:false,Data:{
             Details:user,
             Profile:await ProfileModel.findOne({UserID:user._id}),
