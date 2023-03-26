@@ -12,7 +12,7 @@ router.get('/all',async(req,res)=>{
         //checklogins
         let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
         const getdonations = user?(await DonationsModel.find({UserID:auth})):false
-        return getdonations?user.Verified?res.json({Access:true, Error:false, Donations:getdonations, Allhospital:await HospitalModel.find({})}):res.json({Access:true, Error:'User not verified'}):res.status(404).json({Access:false, Error:'User details doesnt match'}) 
+        return getdonations?user.Verified?res.json({Access:true, Error:false, Donations:getdonations, Allhospital:await HospitalModel.find({Verified1:true, Verified2:true})}):res.json({Access:true, Error:'User not verified'}):res.status(404).json({Access:false, Error:'User details doesnt match'}) 
     
     } catch (error) {
         res.json({Access:true, Error:Errordisplay(error).msg})
