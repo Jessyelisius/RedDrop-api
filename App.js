@@ -66,6 +66,7 @@ app.use('/login',require('./router/hospital/login')) // register hospital
 
 app.use('/dashboard',require('./router/hospital/dashboard')) // register hospital
 
+
 app.use((req,res)=>{
     res.status(404).render('404')
 })
