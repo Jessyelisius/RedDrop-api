@@ -12,7 +12,7 @@ app.use(require('cors')())
 app.set('view engine','ejs')
 
 //public
-app.set(express.static('public'))
+app.use(express.static('public'))
 
 // bodyparser 
 const bodyparser= require('body-parser')
