@@ -89,7 +89,7 @@ router.post('/edit',async(req,res)=>{
 
             //reseting otp and link
             let Verifs= [OTP(),Links()]
-            await userModel.updateOne({UserID:auth}, collect)
+            await userModel.updateOne({_id:auth}, collect)
             await VerificationsModel.updateOne({UserID:user._id},{OTP:Verifs[0], Link:Verifs[1]})
 
             let users=await userModel.findOne({_id:auth})
