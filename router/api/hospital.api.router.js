@@ -9,7 +9,7 @@ router.get('/all',async(req,res)=>{
         const auth = req.headers.authorization    
         //checklogins
         let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
-        const getHospitals = user?(await HospitalModel.find({})):false
+        const getHospitals = user?(await HospitalModel.find({Verified1:true, Verified2:true})):false
         return getHospitals?user.Verified?res.json({Access:true, Error:false, Hospitals:getHospitals}):res.json({Access:true, Error:'User not verified'}):res.status(404).json({Access:false, Error:'User details doesnt match'}) 
     
     } catch (error) {
@@ -24,7 +24,7 @@ router.get('/postalcode/:code',async(req,res)=>{
         const auth = req.headers.authorization    
         //checklogins
         let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
-        const getHospitals = user?(await HospitalModel.find({PostalCode:req.params.code?req.params.code:1})):false
+        const getHospitals = user?(await HospitalModel.find({PostalCode:req.params.code?req.params.code:1, Verified1:true, Verified2:true})):false
 
         return getHospitals?user.Verified?res.json({Access:true, Error:false, Hospitals:getHospitals}):res.json({Access:true, Error:'User not verified'}):res.status(404).json({Access:false, Error:'User details doesnt match'}) 
     
@@ -40,7 +40,7 @@ router.get('/state/:Name',async(req,res)=>{
         const auth = req.headers.authorization    
         //checklogins
         let user=auth?auth.length==24?(await userModel.findOne({_id:auth})):false:false
-        const getHospitals = user?(await HospitalModel.find({State:req.params.Name?req.params.Name:'l'})):false
+        const getHospitals = user?(await HospitalModel.find({State:req.params.Name?req.params.Name:'l',Verified1:true,Verified2:true})):false
 
         return getHospitals?user.Verified?res.json({Access:true, Error:false, Hospitals:getHospitals}):res.json({Access:true, Error:'User not verified'}):res.status(404).json({Access:false, Error:'User details doesnt match'}) 
     
