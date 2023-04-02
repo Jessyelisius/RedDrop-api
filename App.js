@@ -38,7 +38,7 @@ mongoose.connect(process.env.mongo).then(res=>{
 
 })
 
-
+app.get('/',(req,res)=>res.redirect('/register'))
 //////////////////////Api routes/////////////////
 app.use('/api/register',require('./router/api/register.api.router'))//register
 
