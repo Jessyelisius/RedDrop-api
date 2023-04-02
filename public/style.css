@@ -3,8 +3,8 @@
     font-family: 'poppins' ,sans-serif;
 }
 body{
-    background-image: url("/assets/hospital.jpg");
-    background-size: cover;
+    background-image: url("/assets/hospitals.jpg");
+    background-size:contain;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -15,7 +15,82 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 90vh;
-    height: 100;
-    width: 500;
+}
+.container{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 0 15px;
+    
+}
+span{
+    color: red;
+    font-size:larger;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+header{
+    color: #5a5959;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+
+/* .container{
     background-color: red;
+} */
+/* .box{
+    background-color: green;
+} */
+
+ .input-fields input {
+    height: 45px;
+    width: 87%;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 15px;
+    padding: 0 0 0 45px;
+    background: rgba(59, 59, 59, 0.1);
+    outline: none;
+}
+.input-fields selection{
+    width: 80px;
+    height: 50px;
+    border: 0 none transparent;
+}
+.input-fields label{
+    color: #5a5959;
+}
+::-webkit-input-placeholder{
+    color: #fff;
+}
+
+.submit{
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 45px;
+    outline: none;
+    width: 100%;
+    color:  #5a5959;
+    ;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: .3s ;
+}
+.submit button{
+    all: unset;
+    cursor: pointer;
+}
+.submit:hover{
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
 }

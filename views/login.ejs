@@ -4,23 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
     <title>Login</title>
 </head>
 <body>
-    <center>
-        <h2>Login Hospital</h2>
-        <p><%= msg %></p>
-        <form action="/login" method="post">
-           
-            <input type="email" name="Email" placeholder="Email" maxlength="30" required minlength="7" id="">
-            <br><br>
-            
-            <input type="password" name="Password" required minlength="6" maxlength="14" id="">
-            <br><br>
-            <button type="submit">Login</button>
-        </form> 
-        <a href="/register">register</a>
-
-    </center>
+    <div class="box">
+        <div class="container">
+            <h2><span>Login Hospital</span></h2>
+            <header><%= msg %></header>
+            <div class="input-fields">
+                <form action="/login" method="post">
+                
+                    <input type="email" name="Email" placeholder="Email" maxlength="30" required minlength="7" id="">
+                    <br><br>
+                    
+                    <input type="password" name="Password" placeholder="Password" required minlength="6" maxlength="14" id="">
+                    <br><br>
+                    <div class="submit">
+                    <button type="submit"><h3 style="display: flex; align-self: center;padding-left: 300%;">Login</button></h3>
+                    </div>
+                </form> 
+            </div>
+                <h3 style="color: #5a5959;">Don't have Account <a href="/register">Register</a></h3>
+        </div>
+   </div>
 </body>
 </html>
